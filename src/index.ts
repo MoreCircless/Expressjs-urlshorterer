@@ -1,15 +1,22 @@
-import express, { urlencoded, json } from "express";
+import express, { Application } from "express";
+import dotenv from "dotenv";
+import bodyParser from "body-parser";
+import cors from "cors";
+import URLRoutes from "./routes/URLRoutes";
 
-const port = process.env.PORT || 8000;
-const app = express();
+dotenv.config();
 
-app.use(urlencoded({ extended: true }));
-app.use(json());
+const app: Application = express();
+const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.status(200).json({ msg: "Server is up and running" });
-});
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
 
-app.listen(port, () => {
-  console.log(`Server is listening at port ${port}`);
+// Rutas
+app.use("/api", URLRoutes);
+
+// Inicializar el servidor
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
