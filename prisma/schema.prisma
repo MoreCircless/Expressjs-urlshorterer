@@ -6,10 +6,11 @@
 
 generator client {
   provider = "prisma-client-js"
+  skipTransactions = true
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

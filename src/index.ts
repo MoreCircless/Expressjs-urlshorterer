@@ -12,6 +12,7 @@ const PORT = 3000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Rutas
 app.use("/api", URLRoutes);

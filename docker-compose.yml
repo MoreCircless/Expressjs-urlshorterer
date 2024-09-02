@@ -1,10 +1,16 @@
+version: '3.8'
 services:
-  mongodb:
-    image: mongo
-    container_name: mongodb_url_shortener
-    ports:
-      - 27017:27017
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: pablo
+      POSTGRES_PASSWORD: pablo
+      POSTGRES_DB: api
     volumes:
-      - mongodb_data:/data/db
+      - data-url:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
 volumes:
-  mongodb_data: 
+  data-url:
