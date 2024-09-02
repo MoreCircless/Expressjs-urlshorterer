@@ -20,8 +20,8 @@ export const shortURL = (req: Request, res: Response) => {
     return res.status(400).json({ message: "Short URL is required" });
   } 
   try { 
-    const urlget = URLDBGet(shortURL : );
-    res.redirect(urlget);
+    const urlget = URLDBGet(shortURL);
+    res.redirect(urlget.originalUrl);
   } 
   catch (error) {
     return res.status(500).json({ message: "Internal server error" });

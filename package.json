@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "dev": "node --loader=ts-node/esm --env-file=.env --watch src/index.ts",
+    "dev": "bun run src/index.ts --watch",
     "build": "tsc",
     "start": "node dist/index.js"
   },
