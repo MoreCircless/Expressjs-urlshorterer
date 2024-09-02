@@ -21,6 +21,9 @@ export const shortURL = (req: Request, res: Response) => {
   } 
   try { 
     const urlget = URLDBGet(shortURL);
+    if(!urlget === undefined){
+      return res.status(404).json({ message: "URL not found" });
+    }
     res.redirect(urlget.originalUrl);
   } 
   catch (error) {
